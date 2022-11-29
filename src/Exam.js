@@ -7,11 +7,11 @@ import ExamQuestion from './ExamQuestion';
 import loadExam from './loadExam';
 
 
-function Exam({page, setPage}) {
+function Exam({page, setPage, appScore, setAppScore, appTotalAnswered, setAppTotalAnswered}) {
 
+  const [totalQuestions, setTotalQuestions] = useState(0);
   const [score, setScore] = useState(0);
   const [totalAnswered, setTotalAnswered] = useState(0);
-  const [totalQuestions, setTotalQuestions] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [reviewed, setReviewed] = useState(false);
   const [isCorrect, setIsCorrect] = useState(0);
@@ -20,7 +20,7 @@ function Exam({page, setPage}) {
   const [isComplete, setIsComplete] = useState(false);
 
 
-  if (totalQuestions == 0)
+  if (totalQuestions === 0)
   {
     loadExam(setQuestionList);
     setTotalQuestions(questionList.length);
@@ -30,7 +30,8 @@ function Exam({page, setPage}) {
 
     setScore(score + isCorrect);
     setTotalAnswered(totalAnswered+1);
-    if(totalAnswered == questionList.length-1){
+
+    if(totalAnswered === questionList.length-1){
       setIsComplete(true);
     } else
     {
@@ -42,9 +43,11 @@ function Exam({page, setPage}) {
 
   useEffect(() => {
     if (isComplete) {
+      setAppScore(score);
+      setAppTotalAnswered(totalAnswered);
       setPage(2);
     }
-  }, [isComplete]);
+  }, [isComplete, score, totalAnswered]);
 
   return (
     <div className="App">

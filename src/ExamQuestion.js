@@ -132,8 +132,8 @@ function checkKey(e, setReviewed) {
 
 function review(correcta, tentativa, setReviewComment){
         var original = correcta;
-        correcta = Fix(correcta);
-        tentativa = Fix(tentativa);
+        correcta = Fix(correcta).toLowerCase();
+        tentativa = Fix(tentativa).toLowerCase();
 
         if(correcta.trim().normalize() === (tentativa.trim().normalize())) {
             setReviewComment("YES!! (+1)");
@@ -145,7 +145,7 @@ function review(correcta, tentativa, setReviewComment){
             return 0.9;
         }
 
-        if(correcta.normalize().toUpperCase === tentativa.normalize().toUpperCase()) {
+        if(correcta.normalize().toLowerCase === tentativa.normalize().toLowerCase()) {
             setReviewComment("Bien, pero cuidado con las mayúsculas! (+0.9)"+"   \""+original+"\"");
             return 0.9;
         }
@@ -155,7 +155,7 @@ function review(correcta, tentativa, setReviewComment){
             return 0.9;
         }
 
-        if(correcta.replaceAll("é", "e").normalize().toUpperCase() === tentativa.normalize().toUpperCase()) {
+        if(correcta.replaceAll("é", "e").normalize().toLowerCase() === tentativa.normalize().toLowerCase()) {
             setReviewComment("Bien, pero cuidado con el acento y las mayúsculas!! (+0.8)"+"   \""+original+"\"");
             return 0.8;
         }
@@ -171,17 +171,17 @@ function review(correcta, tentativa, setReviewComment){
             return 0.5;
         }
 
-        if(correcta.replaceAll("a ", "").replaceAll("an ", "").normalize().toUpperCase() === tentativa.normalize().toUpperCase()) {
+        if(correcta.replaceAll("a ", "").replaceAll("an ", "").normalize().toLowerCase() === tentativa.normalize().toLowerCase()) {
             setReviewComment("Bien, pero falto poner a (o an) y las mayusculas (+0.3)"+"   \""+original+"\"");
             return 0.3;
         }
 
-        if(correcta.replaceAll("\\p{Punct}", "").normalize().toUpperCase() === tentativa.replaceAll("\\p{Punct}", "").normalize().toUpperCase()) {
+        if(correcta.replaceAll("\\p{Punct}", "").normalize().toLowerCase() === tentativa.replaceAll("\\p{Punct}", "").normalize().toLowerCase()) {
             setReviewComment("Bien, pero cuidado con los puntos, las comas y las mayúsculas! (+0.5)"+"   \""+original+"\"");
             return 0.5;
         }
 
-        if(correcta.replaceAll("é", "e").replaceAll("\\p{Punct}", "").normalize().toUpperCase() === tentativa.replaceAll("\\p{Punct}", "").normalize().toUpperCase()) {
+        if(correcta.replaceAll("é", "e").replaceAll("\\p{Punct}", "").normalize().toLowerCase() === tentativa.replaceAll("\\p{Punct}", "").normalize().toLowerCase()) {
             setReviewComment("Bien, pero cuidado con el acento, puntuación y las mayúsculas!! (+0.5)"+"   \""+original+"\"");
             return 0.5;
         }
