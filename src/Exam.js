@@ -1,0 +1,71 @@
+import './Exam.css';
+
+import React, { useEffect, useState } from 'react';
+
+import ExamHeader from './ExamHeader';
+import ExamQuestion from './ExamQuestion';
+import loadExam from './loadExam';
+
+
+function Exam({page, setPage}) {
+
+  const [score, setScore] = useState(0);
+  const [totalAnswered, setTotalAnswered] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
+  const [answered, setAnswered] = useState(false);
+  const [reviewed, setReviewed] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [questionList, setQuestionList] = useState([]);
+  const [isComplete, setIsComplete] = useState(false);
+
+
+  if (totalQuestions == 0)
+  {
+    loadExam(setQuestionList);
+    setTotalQuestions(questionList.length);
+  }
+
+  if (reviewed){
+
+    setScore(score + isCorrect);
+    setTotalAnswered(totalAnswered+1);
+    if(totalAnswered == questionList.length-1){
+      setIsComplete(true);
+    } else
+    {
+      setCurrentQuestion(currentQuestion+1);
+    }
+    setAnswered(false);
+    setReviewed(false);
+  }
+
+  useEffect(() => {
+    if (isComplete) {
+      setPage(2);
+    }
+  }, [isComplete]);
+
+  return (
+    <div className="App">
+
+      <ExamHeader 
+        totalQuestions = {totalQuestions}
+        totalAnswered = {totalAnswered}
+        score = {score}
+      />
+
+      <ExamQuestion 
+        question = {questionList[currentQuestion]}
+        answered = {answered}
+        setAnswered = {setAnswered}
+        isCorrect = {isCorrect}
+        setIsCorrect = {setIsCorrect}
+        setReviewed = {setReviewed}
+      />
+
+    </div>
+  );
+}
+
+export default Exam;

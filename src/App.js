@@ -1,22 +1,32 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+
 import './App.css';
+import Start from './Start.js';
+import Exam from './Exam.js';
+import Result from './Result.js';
+
 
 function App() {
+
+  const [page, setPage] = useState(0);
+
+  const ActivePage = () => {
+    switch (page) {
+      case 0:
+        return <Start page = {page} setPage = {setPage}/>;
+      case 1:
+        return <Exam page = {page} setPage = {setPage}/>;
+      case 2:
+        return <Result page = {page} setPage = {setPage}/>;
+      default:
+        return <Start page = {page} setPage = {setPage}/>;
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ActivePage/>
       </header>
     </div>
   );
