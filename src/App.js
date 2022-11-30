@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 import './App.css';
 import Start from './Start.js';
 import Exam from './Exam.js';
@@ -7,6 +8,8 @@ import Result from './Result.js';
 
 
 function App() {
+
+  
 
   const [page, setPage] = useState(0);
   const [appScore, setAppScore] = useState(0);
@@ -26,7 +29,6 @@ function App() {
   }
 
   return (
-    
     <div className="App">
       <header className="App-header">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>        
