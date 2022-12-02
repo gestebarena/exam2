@@ -206,6 +206,11 @@ function review(correcta, tentativa, setReviewComment){
         input = input.replaceAll("It's", "It is");
         input = input.replaceAll("don't", "do not");
         input = input.replaceAll("Don't", "Do not");
+        input = input.replaceAll("Thanks", "Thank you");
+        input = input.replaceAll("We are", "We're");
+        input = input.replaceAll("thanks", "thank you");
+        input = input.replaceAll("we are", "we're");
+
         return input;
     }
 
