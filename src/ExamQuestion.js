@@ -194,22 +194,25 @@ function review(correcta, tentativa, setReviewComment){
         input = input.trim();
         input = input.replaceAll("I'm", "I am");
         input = input.replaceAll("i'm", "i am");
-        input = input.replaceAll("isn't", "is not");
-        input = input.replaceAll("Isn't", "Is not");
+        input = input.replaceAll("n't", " not");
         input = input.replaceAll("where's", "where is");
         input = input.replaceAll("Where's", "Where is");
-        input = input.replaceAll("can't", "cant not");
-        input = input.replaceAll("Can't", "Cant not");
         input = input.replaceAll("she's", "she is");
         input = input.replaceAll("She's", "She is");
         input = input.replaceAll("it's", "it is");
         input = input.replaceAll("It's", "It is");
-        input = input.replaceAll("don't", "do not");
-        input = input.replaceAll("Don't", "Do not");
         input = input.replaceAll("Thanks", "Thank you");
-        input = input.replaceAll("We are", "We're");
+        input = input.replaceAll("'re", " are");
         input = input.replaceAll("thanks", "thank you");
-        input = input.replaceAll("we are", "we're");
+        input = input.replaceAll("Thanks", "Thank you");
+        input = input.replaceAll("n't", " not");
+        input = input.replaceAll("what's", "what is");
+        input = input.replaceAll("What's", "What is");
+        input = input.replaceAll("that's", "that is");
+        input = input.replaceAll("That's", "That is");
+        input = input.replaceAll("there's", "there is");
+        input = input.replaceAll("There's", "There is");
+
 
         return input;
     }
