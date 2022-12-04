@@ -65,6 +65,7 @@ function Exam({page, setPage, appScore, setAppScore, appTotalAnswered, setAppTot
         isCorrect = {isCorrect}
         setIsCorrect = {setIsCorrect}
         setReviewed = {setReviewed}
+        currentQuestion = {currentQuestion}
       />
 
     </div>
