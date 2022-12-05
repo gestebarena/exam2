@@ -65,7 +65,7 @@ function QuestionInput ({question, answered, setAnswered, isCorrect, setIsCorrec
                     return (
                         <div>
                             <label>
-                                <input autoFocus type="text"  autoComplete="off" name="answer" 
+                                <input autoFocus type="text"  autoComplete="off" class="answer" 
                                         //onChange={handleChange}
                                         onKeyDown={(e) => textInput(e,
                                             question,
@@ -81,7 +81,6 @@ function QuestionInput ({question, answered, setAnswered, isCorrect, setIsCorrec
                         </div>
                     );
                 case true:
-
                     return (
                         <div>
                             <div className =  {isCorrect == 0 ? 'studentAnswerWrong' : 'studentAnswerRight'}>
@@ -91,6 +90,11 @@ function QuestionInput ({question, answered, setAnswered, isCorrect, setIsCorrec
                                 {reviewComment}
                             </div>
                             <button className = 'reviewedButton' onClick={() => setReviewed(true)}  >OK</button>
+                            <p/>
+                            <input autoFocus type="text"  autoComplete="off" class="reviewKey" 
+                                        onChange={() => setReviewed(true)}
+                                        onKeyDown={() => setReviewed(true)}
+                                        />
                         </div>                       
                     )
             }

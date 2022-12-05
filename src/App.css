@@ -85,6 +85,15 @@ button{
   font-weight: bold;
   text-align: center;
 }
+.reviewKey{
+  font-size: 1px;
+  text-align: center;
+  height: 1;
+  width: 1;
+  color: gray;
+  background-color: gray;
+  box-shadow: none;
+}
 
 .studentAnswerWrong{
   text-decoration: line-through;
